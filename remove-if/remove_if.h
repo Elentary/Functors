@@ -4,10 +4,12 @@
 
 template <class Iterator, class Predicate>
 Iterator RemoveIf(Iterator first, Iterator last, Predicate pred) {
+    Iterator sol = first;
     for (; first != last; ++first) {
         if (pred(*first)) {
-            *last = *first;
-            last--;
+            sol++;
+        } else {
+            *first = *sol;
         }
     }
     return first;
