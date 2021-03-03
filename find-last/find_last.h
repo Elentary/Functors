@@ -4,5 +4,14 @@
 
 template <class Iterator, class T>
 Iterator FindLast(Iterator first, Iterator last, const T& val) {
-    throw std::runtime_error("Not implemented");
+
+  Iterator k = last;
+  for (Iterator i = first; i != last; ++i) {
+    if (val == *i) {
+      k = i;
+    }
+  }
+
+  return k;
+
 }
