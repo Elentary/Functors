@@ -53,9 +53,7 @@ TEST_CASE("ComparisonsCount Strings") {
 TEST_CASE("ComparisonsCount Pointers") {
     auto a = std::make_shared<int>(1);
     auto b = std::make_shared<int>(2);
-
     std::vector<std::shared_ptr<int>> c = {a, b};
     auto res = ComparisonsCount(c.begin(), c.end());
-
     REQUIRE(res == 1);
 }
