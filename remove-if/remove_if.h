@@ -4,5 +4,17 @@
 
 template <class Iterator, class Predicate>
 Iterator RemoveIf(Iterator first, Iterator last, Predicate pred) {
-    throw std::runtime_error("Not implemented");
+    for (; first != last; ++first) {
+        if (pred(*first)) {
+            break;
+        }
+    }
+    if (first != last) {
+        for (auto it = first; ++it != last;) {
+            if (!pred(*it)) {
+                *first++ = std::move(*it);
+            }
+        }
+    }
+    return first;
 }
