@@ -10,7 +10,7 @@ Iterator LocalMax(Iterator first, Iterator last) {
     if (last == first + 1){
         return first;
     }
-    if (*first > *(first + 1)){
+    if (*(first + 1) < *first){
         return first;
     }
     for(auto it = first + 1; it != last - 1; ++it){
@@ -18,7 +18,7 @@ Iterator LocalMax(Iterator first, Iterator last) {
             return it;
         }
     }
-    if (*(last - 1) > *(last - 2)){
+    if (*(last - 2) < *(last - 1)){
         return last - 1;
     }
     return last;
