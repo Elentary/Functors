@@ -4,13 +4,18 @@
 
 template <class Iterator, class Predicate>
 Iterator RemoveIf(Iterator first, Iterator last, Predicate pred) {
-    Iterator sol = first;
-    for (; first != last; ++first) {
-        if (pred(*first)) {
-            sol++;
-        } else {
-            *first = *sol;
+
+    if(first == last) {
+        return first;
+    }
+
+    Iterator it = first;
+    while(it != last){
+        if(!pred(*it)){
+            std::swap(*first, *it);
+            first++;
         }
+        it++;
     }
     return first;
 }
