@@ -4,5 +4,14 @@
 
 template <class Iterator, class Predicate>
 Iterator Partition(Iterator first, Iterator last, Predicate pred) {
-    throw std::runtime_error("Not implemented");
+    Iterator fr = first, an = first;
+
+    while (fr != last) {
+        if (pred(*fr)) {
+            std::swap(*an++, *fr);
+        }
+        fr++;
+    }
+
+    return an;
 }
