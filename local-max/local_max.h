@@ -5,22 +5,34 @@
 
 template <class Iterator>
 Iterator LocalMax(Iterator first, Iterator last) {
-    Iterator start = first;
-    Iterator forw = first++;
-    Iterator end = last--;
 
-    if(first == last){
-        return start;
+    if (first == last) {
+        return first;
     }
 
-    if(first == end){
-        return (*start > *(end)) ? start : end;
+    Iterator prev = first++;
+    if (first == last || *first < *(prev)) {
+        return prev;
     }
 
-    while(forw != end){
-        Iterator next = forw++;
-        if(*forw > *start && *forw > *next){
-            return forw;
+    Iterator current = first++;
+    Iterator next = first;
+
+    while (current != last) {
+        if(next != last){
+            if (*prev < *current && *next < *current) {
+                return current;
+            }
+        } else {
+            if (*prev < *current) {
+                return current;
+            }
         }
+
+        prev++;
+        current++;
+        next++;
     }
+
+    return last;
 }
